@@ -38,3 +38,7 @@ class BasePage:
     def check_element_is_enabled(self, order_button):
         return self.find_element(order_button).is_enabled()
 
+    @allure.step('Проверить наличие элемента на странице')
+    def check_element_is_present(self, locator):
+        return self.driver.element(locator).is_present()
+

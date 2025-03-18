@@ -17,19 +17,24 @@ class InputTenantHelper(BasePage):
     phone_number_field = (By.XPATH, ".//input[contains(@placeholder, 'Телефон: на него позвонит курьер')]")
     next_page_button = (By.XPATH, ".//button[contains(text(),'Далее')]")
 
+    @allure.step('Заполняем поле "Имя"')
     def set_name(self, name):
         self.driver.find_element(*self.name_field).send_keys(name)
 
+    @allure.step('Заполнить поле "Имя"')
     def set_surname(self, surname):
         self.driver.find_element(*self.surname_field).send_keys(surname)
 
+    @allure.step('Заполнить поле "Фамилия"')
     def set_address(self, address):
         self.driver.find_element(*self.address_field).send_keys(address)
 
+    @allure.step('Заполнить поле "Станция метро"')
     def set_metro_station(self, metro_station):
         self.driver.find_element(*self.metro_station_field).click()
         self.driver.find_element(By.XPATH, f'.//div[text()="{metro_station}"]').click()
 
+    @allure.step('Заполнить поле "Номер телефона"')
     def set_phone_number(self, phone_number):
         self.driver.find_element(*self.phone_number_field).send_keys(phone_number)
 

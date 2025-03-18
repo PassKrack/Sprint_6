@@ -1,5 +1,6 @@
 import allure
 
+from default_data import DZEN_URL
 from pages.scooter_page import ScooterPageLocators, ScooterPageHelper
 
 
@@ -12,7 +13,7 @@ class TestRouting:
         scooter_main_page.go_to_site()
         scooter_main_page.click_to_order_button(ScooterPageLocators.YANDEX_LOGO_LOCATOR)
         new_url = scooter_main_page.load_new_window()
-        assert new_url == "https://dzen.ru/?yredirect=true"
+        assert new_url == DZEN_URL
 
     @allure.title('При нажатии на логотип ""Самокат" происходит переход на главную страницу')
     @allure.description('Нажимаем на лого Самоката и проверяем, что открывается главная страница сайта')
@@ -22,4 +23,4 @@ class TestRouting:
         scooter_main_page.check_element_is_enabled(ScooterPageLocators.ORDER_BUTTON1_LOCATOR)
         scooter_main_page.click_to_order_button(ScooterPageLocators.ORDER_BUTTON1_LOCATOR)
         scooter_main_page.click_to_order_button(ScooterPageLocators.SCOOTER_LOGO_LOCATOR)
-        assert ScooterPageLocators.HOME_HEADER_LOCATOR
+        assert scooter_main_page.check_element_is_present(ScooterPageLocators.HOME_HEADER_LOCATOR)

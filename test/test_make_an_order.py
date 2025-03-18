@@ -7,6 +7,7 @@ from pages.scooter_page import ScooterPageHelper
 from pages.tenant_page import InputTenantHelper
 
 
+
 class TestMakeAnOrder:
 
     @pytest.mark.parametrize("user_data", user_info)
@@ -23,5 +24,5 @@ class TestMakeAnOrder:
         order_page = InputOrderHelper(browser)
         order_page.input_data(user_data["date_needed"], user_data["rental_period"], user_data["checkbox"], user_data["comment"])
         order_page.click_to_create_order_button()
-        assert InputOrderHelper.order_info_modal_window
+        assert order_page.check_element_is_present(InputOrderHelper.ORDER_INFO_MODAL_WINDOW)
 
